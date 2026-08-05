@@ -33,3 +33,9 @@ jobs:
 
       - name: docker version check
         run: docker --version
+
+      - name: docker build
+        run: docker build -t tejayerr/auth_and_auth:latest .
+
+      - name: docker images
+        run: docker images
