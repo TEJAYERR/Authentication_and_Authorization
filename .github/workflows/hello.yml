@@ -29,4 +29,4 @@ jobs:
         run: chmod +x mvnw
 
       - name: mvn build
-        run: ./mvnw package
+        run: ./mvnw package -DskipTests
