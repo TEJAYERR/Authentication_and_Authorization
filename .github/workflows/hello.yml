@@ -30,3 +30,6 @@ jobs:
 
       - name: mvn build
         run: ./mvnw package -DskipTests
+
+      - name: docker version check
+        run: docker --version
