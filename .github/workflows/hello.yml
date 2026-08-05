@@ -15,3 +15,9 @@ jobs:
 
       - name: hello workflow
         run: echo "hello from the github!"
+
+      - name: list files
+        run: ls -la
+
+#      - name: mvn build
+#        run: mvn clean package
