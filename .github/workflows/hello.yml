@@ -13,11 +13,18 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v4
 
-      - name: hello workflow
-        run: echo "hello from the github!"
+#      - name: hello workflow
+#        run: echo "hello from the github!"
+#
+#      - name: list files
+#        run: ls -la
 
-      - name: list files
-        run: ls -la
+      - name: setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
 
-#      - name: mvn build
-#        run: mvn clean package
+
+      - name: mvn build
+        run: mvn clean package
