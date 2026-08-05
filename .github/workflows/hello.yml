@@ -39,3 +39,13 @@ jobs:
 
       - name: docker images
         run: docker images
+
+      - name: docker login
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_TOKEN}}
+
+
+      - name: push to docker
+        run: docker push tejayerr/auth_and_auth:latest
