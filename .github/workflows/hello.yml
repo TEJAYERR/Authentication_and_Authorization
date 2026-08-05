@@ -27,4 +27,4 @@ jobs:
 
 
       - name: mvn build
-        run: mvn clean package
+        run: ./mvnw package
