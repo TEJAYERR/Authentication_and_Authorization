@@ -6,10 +6,12 @@ on:
 jobs:
   hello:
 
+    env:
+      IMAGE_NAME: tejayerr/auth_and_auth:latest
+
     runs-on: ubuntu-latest
 
     steps:
-
       - name: checkout repository
         uses: actions/checkout@v4
 
@@ -35,7 +37,7 @@ jobs:
         run: docker --version
 
       - name: docker build
-        run: docker build -t tejayerr/auth_and_auth:latest .
+        run: docker build -t $IMAGE_NAME .
 
       - name: docker images
         run: docker images
@@ -48,4 +50,4 @@ jobs:
 
 
       - name: push to docker
-        run: docker push tejayerr/auth_and_auth:latest
+        run: docker push $IMAGE_NAME
