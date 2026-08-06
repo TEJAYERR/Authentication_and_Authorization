@@ -7,7 +7,7 @@ jobs:
   hello:
 
     env:
-      IMAGE_NAME: tejayerr/auth_and_auth:latest
+      IMAGE_NAME: tejayerr/auth_and_auth
 
     runs-on: ubuntu-latest
 
@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
 #      - name: hello workflow
-#        run: echo "hello from the github!"
+#        run: echo "hello from the github !"
 #
 #      - name: list files
 #        run: ls -la
@@ -31,7 +31,7 @@ jobs:
         run: chmod +x mvnw
 
       - name: mvn build
-        run: ./mvnw package -DskipTests
+        run: ./mvnw clean package -DskipTests
 
       - name: docker version check
         run: docker --version
@@ -51,3 +51,14 @@ jobs:
 
       - name: push to docker
         run: docker push $IMAGE_NAME
+
+
+      - name: ssh into ubuntu server
+        uses: applyboy/ssh-action/@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
+            echo "Connected successfully!"
