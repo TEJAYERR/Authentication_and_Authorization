@@ -16,7 +16,7 @@ services:
       retries: 10
 
     networks:
-      - auth_and_auth_network
+      - example_network
 
     restart: unless-stopped
 
@@ -27,7 +27,7 @@ services:
       - "8080:8080"
 
     networks:
-      - auth_and_auth_network
+      - example_network
 
     depends_on:
       mysql:
@@ -40,4 +40,4 @@ volumes:
   mysql-data:
 
 networks:
-  auth_and_auth_network:
+  example_network:
