@@ -7,7 +7,7 @@ jobs:
   hello:
 
     env:
-      IMAGE_NAME: tejayerr/auth_and_auth
+      IMAGE_NAME: tejayerr/auth_and_auth:latest
 
     runs-on: self-hosted
 
