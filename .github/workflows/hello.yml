@@ -52,6 +52,11 @@ jobs:
       - name: push to docker
         run: docker push $IMAGE_NAME
 
+      - name: Deploy with Docker Compose
+        run: |
+          docker compose pull
+          docker compose up -d
+
 #      - name: ssh into ubuntu server
 #        uses: appleboy/ssh-action/@v1
 #        with:

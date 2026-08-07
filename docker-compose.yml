@@ -1,0 +1,41 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+    networks:
+      - auth_and_auth_network
+
+    restart: unless-stopped
+
+  backend:
+    image: tejayerr/auth_and_auth:latest
+    container_name: backend
+
+    ports:
+      - "8080:8080"
+
+    networks:
+      - auth_and_auth_network
+
+    depends_on:
+      mysql:
+        condition:
+          service_healthy
+
+    restart: unless-stopped
+
+volumes:
+  mysql-data:
+
+networks:
+  auth_and_auth_network:
